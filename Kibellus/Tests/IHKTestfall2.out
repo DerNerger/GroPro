@@ -1,0 +1,47 @@
+;**************************
+;     Testfall 2          
+;**************************
+Eingelesene Woerter:
+AUTO, LADUNG, UNGARN, MILCH, ESSEN, VERSUCH, MATHEMATIK, INFORMATIK, PROGRAMMIERUNG
+
+** Raetsel nicht versteckt
+
+    I
+ESSEN
+ M  F
+PAUTO
+RTN R
+OHGVM
+GEAEA
+RMRRT
+AANSI
+MT UK
+MILCH
+IKAH 
+E D  
+R U  
+U N  
+N G  
+G    
+
+** Raetsel versteckt
+
+NIELI
+ESSEN
+TMJOF
+PAUTO
+RTNMR
+OHGVM
+GEAEA
+RMRRT
+AANSI
+MTPUK
+MILCH
+IKAHF
+EJDAU
+ROUTS
+UYNJB
+NCGFR
+GDLAL
+
+Kompaktheitsmass: 85

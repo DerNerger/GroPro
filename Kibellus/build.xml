@@ -1,0 +1,105 @@
+<project name="Grosses Programm 2016" default="execute">
+	<description>Erstellung von Raetseln.</description>
+
+	<!-- Hier muessen die Argumente angegeben werden, die im Target execute 
+		verwendet werden sollen. -->
+	<property name="args" value="-t Tests/IHKTestfall1.in" />
+
+	<!-- Hier liegen die .java Dateien -->
+	<property name="src" value="./src" />
+
+	<!-- Hier liegen die .class Dateien -->
+	<property name="bin" value="./bin" />
+
+	<!--Hier liegt die .jar Datei -->
+	<property name="dist" value="./dist" />
+
+	<!--Eingebundene Bibliotheken -->
+	<property name="lib" value="./lib" />
+
+	<!-- Order mit der Dokumentation -->
+	<property name="doc" value="./doc" />
+
+	<!-- Wird fuer die Uebergabe von Parametern an das Programm verwendet. -->
+	<property name="mainclass" value="raetselErsteller.logik.Main" />
+	<property name="jarname" value="raetselErsteller.jar" />
+	<property name="skriptname" value="runall.sh" />
+
+	<path id="exepath">
+		<pathelement location="${bin}" />
+	</path>
+
+	<path id="3rd-party-classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init" description="Erstellen des bin-Ordners und dist-Ordners">
+		<mkdir dir="${bin}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="clean" description="Loeschen des bin, dist, doc-Ordners">
+		<delete dir="${bin}" />
+		<delete dir="${dist}" />
+		<delete dir="${doc}" />
+	</target>
+
+	<!-- Dieses Target erstellt die Javadoc-Dokumentation im Ordner src -->
+	<target name="javadoc" depends="init" description="Javadoc-Dokumentation erstellen">
+		<javadoc encoding="UTF-8" charset="UTF-8" docencoding="UTF-8"
+			sourcepath="${src}" destdir="${doc}">
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javadoc>
+	</target>
+
+	<!-- Kompiliert alle .java Dateien aus src und schreibt die .class Dateien 
+		in .bin -->
+	<target name="compile" depends="init"
+		description="Kompilieren aller Klassen vom src- in den bin-Ordner">
+		<javac srcdir="${src}" encoding="latin1" destdir="${bin}"
+			includeantruntime="true">
+			<classpath refid="3rd-party-classpath" />
+		</javac>
+	</target>
+
+	<!-- über ant execute -Dargs="par1 par2 par3" können Parameter an die Main-Klasse 
+		weitergegeben werden -->
+	<target name="execute" depends="compile"
+		description="Ausfuehren des grossen Programms mit der Moeglichkeit Parameter zu uebergeben">
+		<java classname="${mainclass}" fork="false" spawn="false">
+			<classpath>
+				<pathelement location="${bin}" />
+				<path refid="3rd-party-classpath" />
+			</classpath>
+			<arg line="${args}" />
+		</java>
+	</target>
+
+	<target name="create-manifest" depends="init">
+		<manifestclasspath property="lib.list" jarfile="${dist}/myprog.jar">
+			<classpath refid="3rd-party-classpath" />
+		</manifestclasspath>
+		<manifest file="${bin}/MANIFEST.MF">
+			<attribute name="Main-Class" value="${mainclass}" />
+			<attribute name="Class-Path" value="${lib.list}" />
+		</manifest>
+	</target>
+
+	<!-- Dieses Target erstellt die .jar Datei im Ordner .dist. -->
+	<target name="archive" depends="compile,create-manifest"
+		description="Eine ausfuehrbare Jar-Datei mit entsprechendem 
+		Einstiegspunkt bei der Hauptklasse wird im dist-Ordner erzeugt.">
+		<jar destfile="${dist}/${jarname}" manifest="${bin}/MANIFEST.MF">
+			<fileset dir="${bin}" />
+		</jar>
+	</target>
+
+
+
+</project>

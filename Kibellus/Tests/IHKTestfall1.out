@@ -1,0 +1,25 @@
+;**************************
+;     Testfall 1          
+;**************************
+Eingelesene Woerter:
+AUTO, LADUNG, UNGARN, MILCH
+
+** Raetsel nicht versteckt
+
+AUTO  
+MN    
+IG    
+LADUNG
+CR    
+HN    
+
+** Raetsel versteckt
+
+AUTOWM
+MNDBND
+IGAYCN
+LADUNG
+CRQGTQ
+HNQRVD
+
+Kompaktheitsmass: 36

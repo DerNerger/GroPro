@@ -1,0 +1,27 @@
+;**************************
+;     Testfall 3          
+;**************************
+Eingelesene Woerter:
+PRUEFUNG, AUFGABE, MATHEMATIK, INFORMATIK, PROGRAMMIERUNG, ZEIT
+
+** Raetsel nicht versteckt
+
+   MATHEMATIK 
+         U    
+   Z     F    
+PRUEFUNG G    
+   INFORMATIK 
+   T     B    
+PROGRAMMIERUNG
+
+** Raetsel versteckt
+
+KQSMATHEMATIKE
+QUGKFBZHWUOWNU
+QOHZRAUFVFNVDO
+PRUEFUNGDGKIBQ
+YPCINFORMATIKY
+XEZTTZFSIBEEEG
+PROGRAMMIERUNG
+
+Kompaktheitsmass: 98

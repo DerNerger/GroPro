@@ -1,0 +1,19 @@
+;**************************
+;     Normalfall 1         
+;**************************
+Eingelesene Woerter:
+BLANK, BAER, RAD
+
+** Raetsel nicht versteckt
+
+BAER  
+ BLANK
+   D  
+
+** Raetsel versteckt
+
+BAERXT
+IBLANK
+UHCDWF
+
+Kompaktheitsmass: 18
